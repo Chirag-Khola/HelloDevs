@@ -1,5 +1,7 @@
 {
     "mongoURI" : "mongodb+srv://chiragkhola47:Pass%40mongodb@hellodevs.eatjz.mongodb.net/?retryWrites=true&w=majority&appName=HelloDevs",
 
-    "jwtSecret": "bigbootybitches"
+    "jwtSecret": "bigbootybitches",
+    "githubClientId": "Ov23liQpRTmcf92xlRUh",
+    "githubSecret": "095c0209dc8f64215d19b3117e2322aa8b2f2ec1"
 }
