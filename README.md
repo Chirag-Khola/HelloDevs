@@ -1,6 +1,6 @@
 # HelloDevs 🚀
 
-Welcome to **HelloDevs**! This is a full-stack social networking application built using modern web development technologies. 🌐👩‍💻👨‍💻
+Welcome to **HelloDevs**! This is a full-stack social networking application built to connect developers around the world. 🌐👩‍💻👨‍💻
 
 ## Table of Contents 📖
 
