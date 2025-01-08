@@ -63,8 +63,8 @@ Follow these steps to set up HelloDevs locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/hellodevs.git
-   cd hellodevs
+   git clone (https://github.com/Chirag-Khola/HelloDevs)
+   cd HelloDevs
    ```
 
 2. Install dependencies:
@@ -113,4 +113,3 @@ Follow these steps to set up HelloDevs locally:
 Special thanks to:
 
 - The Node.js, Express, and React communities.
-- All contributors and users who make this project better every day. 💖
