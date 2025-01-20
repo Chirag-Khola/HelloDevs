@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Alert from "./components/layout/Alert";
 import Landing from "./components/layout/Landing";
 // Redux
 import { Provider } from "react-redux";
@@ -15,6 +16,8 @@ function App() {
       <Router>
         <Fragment>
           <Navbar />
+          {/* Alert component should be outside of Routes */}
+          <Alert />
           <Routes>
             <Route exact path="/" element={<Landing />} />
             <Route
