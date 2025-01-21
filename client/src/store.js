@@ -9,4 +9,10 @@ const store = configureStore({
   devTools: process.env.NODE_ENV !== "production", // Enable dev tools in development
 });
 
+console.log("Root Reducer:", rootReducer);
+console.log("Initial Store State:", store.getState());
+
+
+
 export default store;
+

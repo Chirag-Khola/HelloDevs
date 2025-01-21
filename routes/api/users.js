@@ -29,7 +29,7 @@ router.post(
     const { name, email, password } = req.body;
 
     try {
-      // see if user exists -> if yes -> return error
+      // Check if the user exists -> if yes, return error
       let user = await User.findOne({ email });
 
       if (user) {
@@ -37,13 +37,15 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: "User already exists" }] });
       }
-      //  get user's gravatar
+
+      // Get the user's Gravatar
       const avatar = gravatar.url(email, {
         s: "200",
         r: "pg",
         d: "mm",
       });
 
+      // Create new user
       user = new User({
         name,
         email,
@@ -51,27 +53,38 @@ router.post(
         password,
       });
 
-      // encrypt password
-
+      // Encrypt the password
       const salt = await bcrypt.genSalt(10);
-
       user.password = await bcrypt.hash(password, salt);
 
+      // Save the user to the database
       await user.save();
 
+      // Create payload for JWT
       const payload = {
         user: {
           id: user.id,
         },
       };
 
+      // Sign JWT and send response with token and user info
       jwt.sign(
         payload,
         config.get("jwtSecret"),
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+
+          // Respond with token and user data
+          res.json({
+            token,
+            user: {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              avatar: user.avatar, // Optionally include avatar or other user info
+            },
+          });
         }
       );
     } catch (err) {
