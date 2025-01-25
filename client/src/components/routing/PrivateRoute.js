@@ -1,21 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-const PrivateRoute = ({ auth: { isAuthenticated, loading } }) => {
+const PrivateRoute = ({ children, auth: { isAuthenticated, loading } }) => {
+  console.log("PrivateRoute Debug:", { isAuthenticated, loading }); // Debug log
+
   if (loading) {
-    return <div>Loading...</div>; // Optionally display a loading spinner
+    return <div>Loading...</div>; // Loading placeholder
   }
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
 PrivateRoute.propTypes = {
-  auth: PropTypes.shape({
-    isAuthenticated: PropTypes.bool.isRequired,
-    loading: PropTypes.bool.isRequired,
-  }).isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

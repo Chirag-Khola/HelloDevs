@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Register from "./components/auth/Register";
@@ -7,7 +7,7 @@ import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 import Landing from "./components/layout/Landing";
 import Dashboard from "./components/dashboard/Dashboard";
-import PrivateRoute from "./components/routing/PrivateRoute"; // Adjusted below for React Router v6
+import PrivateRoute from "./components/routing/PrivateRoute"; // Adjusted for React Router v6
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -18,7 +18,7 @@ if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
-const  App = () => {
+const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
@@ -28,10 +28,10 @@ const  App = () => {
       <Router>
         <Fragment>
           <Navbar />
-          {/* Alert component should be outside of Routes */}
           <Alert />
           <Routes>
-            <Route exact path="/" element={<Landing />} />
+            {/* Public Routes */}
+            <Route path="/" element={<Landing />} />
             <Route
               path="/register"
               element={
@@ -64,6 +64,6 @@ const  App = () => {
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;

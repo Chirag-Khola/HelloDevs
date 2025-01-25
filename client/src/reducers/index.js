@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import alert from './alert';  // Assuming you have an alert reducer
 import authReducer from './auth';  // Assuming the path to your auth reducer
+import profile from './profile';
 
 const rootReducer = combineReducers({
-  alert,  // Including the alert reducer
-  auth: authReducer,  // Including the auth reducer
+  alert,  
+  auth: authReducer,
+  profile  
 });
 
 // Wrapping rootReducer with a logging function for debugging
