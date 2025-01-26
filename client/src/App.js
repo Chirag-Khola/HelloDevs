@@ -7,6 +7,7 @@ import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 import Landing from "./components/layout/Landing";
 import Dashboard from "./components/dashboard/Dashboard";
+import CreateProfile from "./components/profile-forms/CreateProfile";
 import PrivateRoute from "./components/routing/PrivateRoute"; // Adjusted for React Router v6
 // Redux
 import { Provider } from "react-redux";
@@ -55,6 +56,16 @@ const App = () => {
                 <PrivateRoute>
                   <section className="container">
                     <Dashboard />
+                  </section>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/create-profile"
+              element={
+                <PrivateRoute>
+                  <section className="container">
+                    <CreateProfile />
                   </section>
                 </PrivateRoute>
               }
