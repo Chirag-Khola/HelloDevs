@@ -32,6 +32,8 @@ router.get("/me", auth, async (req, res) => {
 // @desc Create or update user profile
 // @access private
 
+// console.log(req.skills);
+
 router.post(
   "/",
   [
@@ -43,8 +45,10 @@ router.post(
   ],
   async (req, res) => {
     const errors = validationResult(req);
+    console.log(req.skills);
 
     if (!errors.isEmpty()) {
+      console.log(req.skills);
       return res.status(400).json({ errors: errors.array() });
     }
 
