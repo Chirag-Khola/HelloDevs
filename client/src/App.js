@@ -8,7 +8,9 @@ import Alert from "./components/layout/Alert";
 import Landing from "./components/layout/Landing";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/profile-forms/CreateProfile";
-import PrivateRoute from "./components/routing/PrivateRoute"; // Adjusted for React Router v6
+import PrivateRoute from "./components/routing/PrivateRoute";
+import EditProfile from "./components/profile-forms/EditProfile";
+// Adjusted for React Router v6
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -66,6 +68,16 @@ const App = () => {
                 <PrivateRoute>
                   <section className="container">
                     <CreateProfile />
+                  </section>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/edit-profile"
+              element={
+                <PrivateRoute>
+                  <section className="container">
+                    <EditProfile />
                   </section>
                 </PrivateRoute>
               }
