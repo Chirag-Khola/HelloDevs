@@ -8,6 +8,8 @@ import Alert from "./components/layout/Alert";
 import Landing from "./components/layout/Landing";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/profile-forms/CreateProfile";
+import AddExperience from "./components/profile-forms/AddExperience";
+import AddEducation from "./components/profile-forms/AddEducation";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import EditProfile from "./components/profile-forms/EditProfile";
 // Adjusted for React Router v6
@@ -78,6 +80,26 @@ const App = () => {
                 <PrivateRoute>
                   <section className="container">
                     <EditProfile />
+                  </section>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/add-experience"
+              element={
+                <PrivateRoute>
+                  <section className="container">
+                    <AddExperience />
+                  </section>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/add-education"
+              element={
+                <PrivateRoute>
+                  <section className="container">
+                    <AddEducation />
                   </section>
                 </PrivateRoute>
               }
