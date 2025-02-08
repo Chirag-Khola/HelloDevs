@@ -103,7 +103,7 @@ const AddEducation = ({ addEducation }) => {
             checked={current}
             onChange={() => setFormData({ ...formData, current: !current })}
           />
-          <label className="form-check-label">Current Job</label>
+          <label className="form-check-label">Current</label>
         </div>
 
         <div className="mb-3">
