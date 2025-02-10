@@ -10,6 +10,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/profile-forms/CreateProfile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
+
 import PrivateRoute from "./components/routing/PrivateRoute";
 import EditProfile from "./components/profile-forms/EditProfile";
 // Adjusted for React Router v6
@@ -18,6 +19,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+import Profiles from "./components/profiles/Profiles";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -64,6 +66,14 @@ const App = () => {
                 </PrivateRoute>
               }
             />
+            <Route
+              path="/profiles"
+              element={
+                <section className="container">
+                  <Profiles />
+                </section>
+              }
+            />            
             <Route
               path="/create-profile"
               element={

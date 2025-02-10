@@ -3,9 +3,12 @@ import { setAlert } from "./alert";
 
 import {
   GET_PROFILE,
+  GET_PROFILES,
+  CLEAR_PROFILE,
   PROFILE_ERROR,
   UPDATE_PROFILE,
   ACCOUNT_DELETED,
+  GET_REPOS
 } from "./types";
 
 //  get current user's profile
@@ -30,6 +33,82 @@ export const getCurrentProfile = () => async (dispatch) => {
     });
   }
 };
+
+// Get all profiles
+
+export const getProfiles = () => async (dispatch) => {
+  
+  dispatch({ type: CLEAR_PROFILE});
+  
+  
+  try {
+    const res = await axios.get("/api/profile"); // Ensure this endpoint is correct
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error("getCurrentProfile Error:", err); // Debugging log
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: err.response?.statusText || "Unknown Error", // Safe fallback
+        status: err.response?.status || 500, // Default to 500 if undefined
+      },
+    });
+  }
+};
+
+// Get profile by ID
+
+export const getProfileById = userId => async (dispatch) => {
+  
+  try {
+    const res = await axios.get(`/api/profile/user/${userId}`); // Ensure this endpoint is correct
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error("getCurrentProfile Error:", err); // Debugging log
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: err.response?.statusText || "Unknown Error", // Safe fallback
+        status: err.response?.status || 500, // Default to 500 if undefined
+      },
+    });
+  }
+};
+
+// Get github repos
+
+export const getGithubRepos = username => async (dispatch) => {
+    
+  try {
+    const res = await axios.get(`/api/profile/github/${username}`); // Ensure this endpoint is correct
+
+    dispatch({
+      type: GET_REPOS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error("getCurrentProfile Error:", err); // Debugging log
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: err.response?.statusText || "Unknown Error", // Safe fallback
+        status: err.response?.status || 500, // Default to 500 if undefined
+      },
+    });
+  }
+};
+
 
 //  create or update a profile
 
