@@ -9,6 +9,7 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+import ProfileGithub from './ProfileGithub';
 const Profile = ({ getProfileById, profile: { profile, loading }, auth }) => {
     const { id } = useParams(); // Get id from URL
 
@@ -46,6 +47,10 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth }) => {
                         ))}
                     </Fragment>) : (<h4> No education details </h4>)}
                 </div>
+
+                {profile.githubusername && (
+                    <ProfileGithub username = {profile.githubusername}/>
+                )}
 
             </div>
         </Fragment>
