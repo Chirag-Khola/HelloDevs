@@ -1,12 +1,14 @@
-import { combineReducers } from 'redux';
-import alert from './alert';  // Assuming you have an alert reducer
-import authReducer from './auth';  // Assuming the path to your auth reducer
-import profile from './profile';
+import { combineReducers } from "redux";
+import alert from "./alert"; // Assuming you have an alert reducer
+import authReducer from "./auth"; // Assuming the path to your auth reducer
+import profile from "./profile";
+import post from "./post";
 
 const rootReducer = combineReducers({
-  alert,  
+  alert,
   auth: authReducer,
-  profile  
+  profile,
+  post,
 });
 
 // Wrapping rootReducer with a logging function for debugging
@@ -17,9 +19,4 @@ const debugReducer = (state, action) => {
   return nextState;
 };
 
-export default rootReducer;  // Exporting the debugReducer instead of rootReducer
-
-
-
-
-
+export default rootReducer; // Exporting the debugReducer instead of rootReducer
