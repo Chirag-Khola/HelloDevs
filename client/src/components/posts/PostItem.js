@@ -68,8 +68,8 @@ const PostItem = ({
 };
 
 PostItem.defaultProps = {
-  showActions : true
-}
+  showActions: true,
+};
 
 PostItem.propTypes = {
   post: PropTypes.object.isRequired,
